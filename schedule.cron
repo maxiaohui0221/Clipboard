@@ -1,0 +1,5 @@
+# Set PROJECT_DIR to the absolute project path before adding this to your crontab.
+# The pipeline runs daily at 08:00 in the scheduler's local time.
+PROJECT_DIR=/absolute/path/to/bellhaven-crm
+
+0 8 * * * ( cd "$PROJECT_DIR" && set -a && . ./.env && set +a && exec ./.venv/bin/python pipeline.py ) >> "$PROJECT_DIR/pipeline.log" 2>&1
